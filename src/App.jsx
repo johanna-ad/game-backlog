@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { prerenderToNodeStream } from 'react-dom/static';
 
 function App() {
   const [text, setText] = useState("")
@@ -24,6 +25,17 @@ function handleAdd() {
   setText("")
 }
 
+function handleToggle(id){
+  const updatedTodos=todos.map(function(todo) {
+  if (todo.id === id) {
+    return {...todo, completed: !todo.completed }
+  }
+  return todo
+  })
+
+  setTodos(updatedTodos)
+
+}
    return (
   <>
     <h1>Game Backlog</h1>
@@ -39,7 +51,18 @@ function handleAdd() {
 
     <ul>
       {todos.map(function (todo) {
-      return <li key={todo.id}>{todo.text}</li>
+      return (
+      <li key={todo.id}>
+        <input 
+        type="checkbox"
+        checked={todo.completed}
+        onChange={() => handleToggle(todo.id)}
+        />
+        <span style={{ textDecoration: todo.completed ? "line-through" : "none"}}>
+        {todo.text}
+        </span>
+      </li>
+      )
       })}
     </ul>
   </>
