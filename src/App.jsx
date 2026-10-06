@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { prerenderToNodeStream } from 'react-dom/static';
 
 function App() {
   const [text, setText] = useState("")
@@ -36,6 +35,14 @@ function handleToggle(id){
   setTodos(updatedTodos)
 
 }
+
+function handleDelete(id) {
+  const updatedTodos=todos.filter(function(todo) {
+    return todo.id !== id
+  })
+
+  setTodos(updatedTodos)
+}
    return (
   <>
     <h1>Game Backlog</h1>
@@ -61,6 +68,7 @@ function handleToggle(id){
         <span style={{ textDecoration: todo.completed ? "line-through" : "none"}}>
         {todo.text}
         </span>
+        <button type="button" onClick={() => handleDelete(todo.id)}>🗑️</button>
       </li>
       )
       })}
