@@ -49,26 +49,39 @@ function handleDelete(id) {
     <p>Spel jag ska testa:</p>
 
     <input
+      className="game-input"
       type="text"
       value={text}
       onChange={handleChange}
       placeholder="Skriv in ett spel"
     />
-    <button type="button" onClick={handleAdd}>Lägg till</button>
+    <button 
+    className="add-button"
+    type="button" 
+    onClick={handleAdd}
+    >
+      Lägg till</button>
 
     <ul>
       {todos.map(function (todo) {
       return (
       <li key={todo.id}>
-        <input 
+       
+        <span style={{ textDecoration: todo.completed ? "line-through" : "none"}}>
+        {todo.text}
+        </span>
+
+         <input 
+         className="game-checkbox"
         type="checkbox"
         checked={todo.completed}
         onChange={() => handleToggle(todo.id)}
         />
-        <span style={{ textDecoration: todo.completed ? "line-through" : "none"}}>
-        {todo.text}
-        </span>
-        <button type="button" onClick={() => handleDelete(todo.id)}>🗑️</button>
+
+        <button 
+        className="delete-button"
+        type="button" 
+        onClick={() => handleDelete(todo.id)}>X</button>
       </li>
       )
       })}
