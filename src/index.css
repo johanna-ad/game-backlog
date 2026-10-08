@@ -1,12 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
 
+
 body {
   margin: 0;
   min-height: 100vh;
   background-image: url("./assets/game-background.png");
   background-size: auto;
-  font-family: cinzel; 
+  font-family: cinzel;
 }
+
 
 #root {
   max-width: 800px;
@@ -16,7 +18,9 @@ body {
   color: #f5f5f5;
   text-align: center;
 
+
 }
+
 
 ul {
   display: grid;
@@ -26,6 +30,7 @@ ul {
   max-width: 600px;
   margin: 25px auto 0;
 }
+
 
 li {
   border: 1px solid #444;
@@ -38,12 +43,14 @@ li {
   position: relative;
 }
 
+
 .delete-button {
   background: transparent;
   border: none;
   margin-left: auto;
   font-weight: bold;
 }
+
 
 .game-input {
   border-radius: 10px;
@@ -54,6 +61,7 @@ li {
   border: 1px solid #555;
 }
 
+
 .add-button {
   border-radius: 10px;
   padding: 8px;
@@ -62,7 +70,9 @@ li {
   border: 1px solid #555;
 }
 
+
 .game-checkbox {
 position: absolute;
 right: 25px;
 }
+
