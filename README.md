@@ -1,16 +1,21 @@
-# React + Vite
+# Game Backlog
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Game Backlog är en enkel React-app där användaren kan lägga till spel som den vill testa. Spelen kan markeras som testade eller tas bort från listan.
 
-Currently, two official plugins are available:
+## 1. State-hantering
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Jag använder useState för att hålla reda på listan med spel och om spelen är testade eller inte. Varje spel har bland annat ett completed-värde som är true eller false. När state uppdateras renderar React om gränssnittet så att ändringen syns direkt.
 
-## React Compiler
+## 2. Oföränderlighet (Immutability)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+I React ska man inte använda till exempel .push() för att ändra en befintlig array direkt. Istället skapar jag en ny array med spread när jag lägger till ett spel och med .filter() när jag tar bort ett spel. Sedan uppdaterar jag state med den nya arrayen.
 
-## Expanding the ESLint configuration
+## 3. Kodgranskning
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Funktionen använder .push(), vilket ändrar den befintliga arrayen direkt och sedan returnerar samma array. I React vill man istället skapa en ny array så att state kan uppdateras på rätt sätt. Jag skulle därför skriva: return [...todos, text] istället.
+
+## Problemlösning och reflektion
+
+När jag har kört fast har jag använt kursmaterialet och AI för att få hjälp att förstå problemen. Ett konkret exempel är när jag behövde förstå hur .map() och .filter() verkligen fungerade och hur de används för att ändra eller ta bort rätt spel i listan.
+
+Jag har också använt AI för hjälp med felsökning och för att få kod förklarad när jag inte förstått vad de olika delarna gör. Jag har sedan testat ändringarna i min egen app för att se hur det faktiskt påverkar resultatet.
